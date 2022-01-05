@@ -10,26 +10,29 @@ package praktikum.ti.praktikum.coba.konversi.suhu;
  */
 public class Classpemrosesan {
     
-    public String getSuhu(){
-        String konversi = "";
-        double celcius = 55.4;        double fahrenheit = 150.7;
-        double kelvin = 200;
+    public Double getnilai(String nilai){
         
-        double suhu;
+        Double konvert = Double.valueOf(nilai);
         
-        String pilih = "c"; //pilihan unutuk konversi
+        return konvert;
+    }
+    
+    public Double reamur(Double c){
+         Double reamur = c*4/5;
         
-        if(pilih =="c"){
-            suhu = fahrenheit-32*5/9;
-            konversi = "suhu Celcius :" +suhu;
-            
-        }else if(pilih =="f"){
-            suhu = 9/5*celcius+32;
-            konversi = "Suhu Fahrenheit : "+ suhu;
-        }else{
-            konversi = "tidak di temukan";
-        }
+        return reamur;
+    }
+    
+    public Double fahrenheit(Double c){
+        Double fah = (c*9/5)+32;
         
-        return konversi;
+        return fah;
+    }
+    
+    public Double kelvin(Double c ){
+        
+        Double kel = c+273.15;
+        
+        return kel;
     }
 }

@@ -4,26 +4,35 @@
  */
 package praktikum.ti.praktikum.coba.konversi.suhu;
 
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import praktikum.ti.praktikum.coba.konversi.suhu.Classpemrosesan;
 
 @Controller
-@ResponseBody
 /**
  *
  * @author USER_64
  */
 public class projectController {
     
-    Classpemrosesan proses = new Classpemrosesan();
+    @RequestMapping("/convert")
+    public String suhu(HttpServletRequest vert, Model ubah){
+        Classpemrosesan proses = new Classpemrosesan();
+        
+       String input = vert.getParameter("var_input");
+       
+       Double change = proses.getnilai(input);
+       Double kreamur = proses.reamur(change);
+       Double kfar = proses.fahrenheit(change);
+       Double kkel = proses.kelvin(change);
+       
     
-    @RequestMapping("/suhu")
-    public String suhu(){
-    
-        String suhu = proses.getSuhu();
+        ubah.addAttribute("nilai",change);
+        ubah.addAttribute("reamur",kreamur);
+        ubah.addAttribute("fahrenheit",kfar);
+        ubah.addAttribute("kelvin",kkel);
                 
-        return suhu;
+        return "konversi";
     }
 }
